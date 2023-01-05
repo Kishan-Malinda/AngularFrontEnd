@@ -1,0 +1,8 @@
+.homeImg{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.homePage{
+    background-image: linear-gradient(rgb(173, 214, 248), rgb(255, 255, 255));
+}
