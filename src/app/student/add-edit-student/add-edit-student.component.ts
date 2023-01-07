@@ -13,15 +13,17 @@ export class AddEditStudentComponent implements OnInit{
   constructor(private service : SharedApiServiceService , private toastr: ToastrService ){}
 
   @Input() student:any;
+  
   studentID:string="";
   fName:string="";
   lName:string="";
-  dob: Date=new Date();
+  dob: string="";
   address:string="";
 
   responseObj : any ={}
 
   ngOnInit():void{
+    
     this.studentID = this.student.studentID;
     this.fName = this.student.fName;
     this.lName = this.student.lName;
@@ -41,9 +43,10 @@ export class AddEditStudentComponent implements OnInit{
     this.service.addStudent(st).subscribe(res=>{
       this.responseObj = res;
       if(this.responseObj.message == "Success"){
-          this.toastr.success("Student Added Successfully");
+          this.toastr.success("Student Added Successfully","Message");
       }
     })
+    this.clearData();
   }
 
   updateStudent(){
@@ -58,9 +61,18 @@ export class AddEditStudentComponent implements OnInit{
     this.service.updateStudent(st).subscribe(res=>{
       this.responseObj = res;
       if(this.responseObj.message == "Success"){
-          this.toastr.success("Student Updated Successfully");
+          this.toastr.success("Student Updated Successfully","Message");
       }
     })
+    this.clearData();
+  }
+
+  clearData(){
+    this.studentID = "";
+    this.fName = "";
+    this.lName = "";
+    this.dob= "";
+    this.address = ""
   }
 
 }

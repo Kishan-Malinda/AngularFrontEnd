@@ -39,7 +39,7 @@ getStudentList(){
   }
 
   getConfirm(){
-    alert('Are You sure : ? ');
+    alert('Do you Really want to Delete this Record : ? ');
   }
 
   addClick(){
@@ -61,7 +61,7 @@ getStudentList(){
   }
 
   closeClick(){
-    this.ActivateAddEditStudent=true;
+    this.ActivateAddEditStudent=false;
     this.getStudentList();
   }
   
@@ -71,15 +71,12 @@ getStudentList(){
       this.responseObj = result;
       console.log(this.responseObj.message);
       if(this.responseObj.message === "Success"){
-        this.toastr.error("Student Deleted");
+        this.toastr.error("Student Deleted","Message");
       }
       this.getStudentList();
     });
 
   }
-  addStudentClicked(){
-    this.addStudent = !this.addStudent;
-    console.log("Add Student Clicked" + this.addStudent);
-  }
+  
   
 }

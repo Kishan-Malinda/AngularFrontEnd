@@ -19,7 +19,7 @@ export class SharedApiServiceService {
     return this.http.get<IStudent[]>(this.APIURL+'/SelectAll');
   }
   getStudentById(val:any): Observable<any>{
-    return this.http.get<any>(this.APIURL+'/Select/'+val);
+    return this.http.get<any>(this.APIURL+'/Select/?StudentID='+val);
   }
   addStudent(val:any){
     return this.http.post(this.APIURL+'/Insert/',val);
