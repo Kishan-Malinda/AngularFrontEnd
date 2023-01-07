@@ -24,6 +24,8 @@ export class HomeComponent {
         this.Student = student;
       }      
     }, (err)=>{
+      this.showResultTable = false;
+      this.Student = [];
       this.toastr.error(err.error.data.message,'Error',{
          positionClass: 'toast-bottom-center'
       });
