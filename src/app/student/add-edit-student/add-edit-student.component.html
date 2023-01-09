@@ -1,26 +1,30 @@
 <div class="form-group row">
-    <label class="col-sm-2 col-form-lable my-2">Student ID : </label>
-    <div class="col-sm-10">
+        
+    <div *ngIf="!isUpdate">
+        <label class="col-form-lable my-2">Student ID : <p class="requiredField">*</p> </label>
         <input type="text" class="form-control" [(ngModel)]="studentID" placeholder="Enter Student ID"/>
     </div>
 
-    <label class="col-sm-2 col-form-lable my-2">First Name : </label>
-    <div class="col-sm-10">
+    
+    <div>
+        <label class="col-form-lable my-2">First Name : <p class="requiredField">*</p></label>
         <input type="text" class="form-control" [(ngModel)]="fName" placeholder="Enter First Name"/>
     </div>
 
-    <label class="col-sm-2 col-form-lable my-2">Last Name : </label>
-    <div class="col-sm-10">
+    
+    <div>
+        <label class="col-form-lable my-2">Last Name : <p class="requiredField">*</p></label>
         <input type="text" class="form-control" [(ngModel)]="lName" placeholder="Enter Last Name"/>
     </div>
 
-    <label class="col-sm-2 col-form-lable my-2">DOB : </label>
-    <div class="col-sm-10">
-        <input type="text" class="form-control" [(ngModel)]="dob" placeholder="Enter DOB"/>
+    
+    <div>
+        <label class="col-form-lable my-2">DOB : <p class="requiredField">*</p> </label>
+        <input type="text" class="form-control" [(ngModel)]="dob" placeholder="Enter DOB - YYYY-MM-DD"/>
     </div>
 
-    <label class="col-sm-2 col-form-lable my-2">Address : </label>
-    <div class="col-sm-10">
+    <div>
+        <label class="col-form-lable my-2">Address : <p class="requiredField">*</p> </label>
         <input type="text" class="form-control" [(ngModel)]="address" placeholder="Enter Student Address"/>
     </div>
 </div>

@@ -20,6 +20,7 @@ export class ShowStudentsComponent implements OnInit{
   ModelTitle : string="";
   ActivateAddEditStudent : boolean = false;
   student : any;
+  isUpdate : boolean =false;
         
   ngOnInit(): void {  // this is the First Function which invoked when rendering this component
     this.getStudentList();
@@ -42,7 +43,7 @@ getStudentList(){
     alert('Do you Really want to Delete this Record : ? ');
   }
 
-  addClick(){
+  addClick(isUpdate :boolean){
     this.student = {
       studentID:"",
       fName:"",
@@ -50,12 +51,14 @@ getStudentList(){
       dob: "",
       address:""
     }
+    this.isUpdate = isUpdate;
     this.ModelTitle="Add Student";
     this.ActivateAddEditStudent=true ;
   }
 
-  editClick(student:IStudent){
+  editClick(student:IStudent, isUpdate :boolean ){
     this.student = student;
+    this.isUpdate = isUpdate;
     this.ModelTitle = "Edit Student Details";
     this.ActivateAddEditStudent = true
   }
@@ -67,15 +70,21 @@ getStudentList(){
   
   deleteClicked(val:any){
     this.getConfirm();
-    this.service.deleteStudent(val).subscribe(result=>{
-      this.responseObj = result;
-      console.log(this.responseObj.message);
-      if(this.responseObj.message === "Success"){
-        this.toastr.error("Student Deleted","Message");
+    this.service.deleteStudent(val).subscribe({
+      next: (result) =>{
+        this.responseObj = result;
+        console.log(this.responseObj.message);
+        if(this.responseObj.message === "Success"){
+          this.toastr.error("Student Deleted","Message");
+        }
+        this.getStudentList();
+      },
+      error : (err) =>{
+        this.toastr.error("Error Occured","Message");
       }
-      this.getStudentList();
+      
     });
-
+    
   }
   
   

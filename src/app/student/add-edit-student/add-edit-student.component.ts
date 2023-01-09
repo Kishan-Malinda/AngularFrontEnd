@@ -13,13 +13,14 @@ export class AddEditStudentComponent implements OnInit{
   constructor(private service : SharedApiServiceService , private toastr: ToastrService ){}
 
   @Input() student:any;
+  @Input() isUpdate:any;
   
   studentID:string="";
   fName:string="";
   lName:string="";
   dob: string="";
   address:string="";
-
+  
   responseObj : any ={}
 
   ngOnInit():void{
@@ -31,7 +32,17 @@ export class AddEditStudentComponent implements OnInit{
     this.address = this.student.address
   }
 
+  validate() : any{
+    if(!this.studentID || !this.fName || !this.lName || !this.dob || !this.address){
+      this.toastr.error("Input All Required Fields");
+      return false; 
+    }else{
+      return true;
+    }
+  }
+
   addStudent(){
+    console.log(this.isUpdate);
     var st = {
       studentID: this.studentID,
       fName : this.fName,
@@ -40,16 +51,22 @@ export class AddEditStudentComponent implements OnInit{
       address : this.address
     }
 
-    this.service.addStudent(st).subscribe(res=>{
-      this.responseObj = res;
-      if(this.responseObj.message == "Success"){
-          this.toastr.success("Student Added Successfully","Message");
-      }
-    })
+    if(this.validate()){
+      this.service.addStudent(st).subscribe(res=>{
+        this.responseObj = res;
+        if(this.responseObj.message == "Success"){
+            this.toastr.success("Student Added Successfully","Message");
+        }
+      },err =>{
+        this.responseObj =err;
+        this.toastr.error(this.responseObj.error.data.message);
+      })
+    }
     this.clearData();
   }
 
   updateStudent(){
+    console.log(this.isUpdate);
     var st = {
       studentID: this.studentID,
       fName : this.fName,
@@ -58,12 +75,17 @@ export class AddEditStudentComponent implements OnInit{
       address : this.address
     }
 
-    this.service.updateStudent(st).subscribe(res=>{
-      this.responseObj = res;
-      if(this.responseObj.message == "Success"){
-          this.toastr.success("Student Updated Successfully","Message");
-      }
-    })
+    if(this.validate()){
+      this.service.updateStudent(st).subscribe(res=>{
+        this.responseObj = res;
+        if(this.responseObj.message == "Success"){
+            this.toastr.success("Student Updated Successfully","Message");
+        }
+      },
+      err =>{
+        this.toastr.error("Error Occured");
+      })
+    }
     this.clearData();
   }
 

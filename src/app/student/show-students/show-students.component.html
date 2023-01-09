@@ -1,6 +1,6 @@
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary float-right m-2" data-bs-toggle="modal" data-bs-target="#exampleModal"
-    (click)="addClick()" data-backdrop="static" data-keyboard="false">
+    (click)="addClick(false)" data-backdrop="static" data-keyboard="false">
     Add Student 
   </button>
   
@@ -14,7 +14,7 @@
           (click)="closeClick()"></button>
         </div>
         <div class="modal-body">
-          <app-add-edit-student [student]="student" *ngIf="ActivateAddEditStudent"></app-add-edit-student>
+          <app-add-edit-student [student]="student" [isUpdate]="isUpdate" *ngIf="ActivateAddEditStudent"></app-add-edit-student>
         </div>
         
       </div>
@@ -45,7 +45,7 @@
                         <td>
                             <button type="button" class="btn btn-success mx-2" 
                             data-bs-toggle="modal" data-bs-target="#exampleModal"
-                            (click)="editClick(student)" data-backdrop="static" data-keyboard="false"
+                            (click)="editClick(student,true)" data-backdrop="static" data-keyboard="false"
                             > Edit</button>
 
                             <button type="button" (click)="deleteClicked(student.studentID)" class="btn btn-danger" > Delete </button>
