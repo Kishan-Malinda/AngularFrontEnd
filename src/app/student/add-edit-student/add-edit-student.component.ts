@@ -42,7 +42,7 @@ export class AddEditStudentComponent implements OnInit{
   }
 
   addStudent(){
-    console.log(this.isUpdate);
+    
     var st = {
       studentID: this.studentID,
       fName : this.fName,
@@ -66,7 +66,7 @@ export class AddEditStudentComponent implements OnInit{
   }
 
   updateStudent(){
-    console.log(this.isUpdate);
+    
     var st = {
       studentID: this.studentID,
       fName : this.fName,

@@ -28,14 +28,17 @@ export class ShowStudentsComponent implements OnInit{
 
 getStudentList(){
     this.service.getStudentList().
-    subscribe( data =>{
-      var obj = JSON.parse(JSON.stringify(data));
-      var obj2 = JSON.parse(JSON.stringify(obj.data));
-      var obj3 = JSON.parse(obj2);
-      
-      this.StudentList = obj3;
-      console.log(this.StudentList);
-      
+    subscribe( {
+      next : (data) => {
+        var obj = JSON.parse(JSON.stringify(data));
+        var obj2 = JSON.parse(JSON.stringify(obj.data));
+        var obj3 = JSON.parse(obj2);
+        this.StudentList = obj3;
+        console.log(this.StudentList);
+      },
+      error : (err) =>{
+        this.toastr.error("Error Occured","Message");
+      }
     })
   }
 
