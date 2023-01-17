@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { SharedApiServiceService } from '../shared-api-service.service';
+import { SharedApiServiceService } from '../../services/shared-api-service.service';
 import { ToastrService } from 'ngx-toastr';
-import { IStudent } from '../student/student';
+import { IStudent } from '../../models/student';
 
 @Component({
   selector: 'app-home',

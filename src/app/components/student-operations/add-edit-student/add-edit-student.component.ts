@@ -1,5 +1,5 @@
 import { Component,OnInit,Input } from '@angular/core';
-import { SharedApiServiceService } from 'src/app/shared-api-service.service';
+import { SharedApiServiceService } from 'src/app/services/shared-api-service.service';
 
 import { ToastrService } from 'ngx-toastr'; // For Notifications
 
@@ -41,8 +41,7 @@ export class AddEditStudentComponent implements OnInit{
     }
   }
 
-  addStudent(){
-    
+  addStudent(){    
     var st = {
       studentID: this.studentID,
       fName : this.fName,
@@ -65,8 +64,7 @@ export class AddEditStudentComponent implements OnInit{
     this.clearData();
   }
 
-  updateStudent(){
-    
+  updateStudent(){    
     var st = {
       studentID: this.studentID,
       fName : this.fName,
@@ -80,13 +78,14 @@ export class AddEditStudentComponent implements OnInit{
         this.responseObj = res;
         if(this.responseObj.message == "Success"){
             this.toastr.success("Student Updated Successfully","Message");
+            this.clearData();
         }
       },
       err =>{
         this.toastr.error("Error Occured");
       })
     }
-    this.clearData();
+    
   }
 
   clearData(){

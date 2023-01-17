@@ -1,7 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { SharedApiServiceService } from 'src/app/shared-api-service.service';
-import { IStudent } from '../student';
+import { Component, OnInit, ViewChild} from '@angular/core';
+import { SharedApiServiceService } from 'src/app/services/shared-api-service.service';
+import { IStudent } from '../../../models/student';
 import { ToastrService } from 'ngx-toastr';
+
+import {MatPaginator} from '@angular/material/paginator';
+import {MatSort} from '@angular/material/sort';
+import {MatTableDataSource} from '@angular/material/table';
 
 @Component({
   selector: 'app-show-students',
@@ -9,8 +13,6 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./show-students.component.css']
 })
 export class ShowStudentsComponent implements OnInit{
-
-  constructor(private service:SharedApiServiceService,private toastr: ToastrService ) { }
 
   StudentList:IStudent[]=[]; 
   responseObj : any ={} ;
@@ -21,7 +23,15 @@ export class ShowStudentsComponent implements OnInit{
   ActivateAddEditStudent : boolean = false;
   student : any;
   isUpdate : boolean =false;
-        
+
+  // For Material Table
+  displayedColumns: string[] = ['studentID', 'fName', 'lName', 'dob','address','Options'];
+  dataSource !: MatTableDataSource<any> ; 
+  @ViewChild(MatPaginator) paginator !: MatPaginator;
+  @ViewChild(MatSort) sort !: MatSort;
+
+  constructor(private service:SharedApiServiceService,private toastr: ToastrService ) { }
+
   ngOnInit(): void {  // this is the First Function which invoked when rendering this component
     this.getStudentList();
   }
@@ -33,8 +43,10 @@ getStudentList(){
         var obj = JSON.parse(JSON.stringify(data));
         var obj2 = JSON.parse(JSON.stringify(obj.data));
         var obj3 = JSON.parse(obj2);
-        this.StudentList = obj3;
-        console.log(this.StudentList);
+        console.log(obj3);
+        this.dataSource = new MatTableDataSource(obj3);
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
       },
       error : (err) =>{
         this.toastr.error("Error Occured","Message");
@@ -85,10 +97,15 @@ getStudentList(){
       error : (err) =>{
         this.toastr.error("Error Occured","Message");
       }
-      
     });
-    
   }
-  
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
+  }
   
 }
