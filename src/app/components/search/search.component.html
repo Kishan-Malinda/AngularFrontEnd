@@ -1,0 +1,38 @@
+<section class="search-background">
+    <div class="container searchBox" >
+        <h2  class="text-center fw-bold">Search Student</h2 >
+        <form class="m-2" #studentSearch="ngForm" (ngSubmit)="submit(studentSearch)">
+            <div class="mb-3">
+              <label  for="studentId" class="form-label fw-bold">Student ID</label>
+              <input class="inputField" autocomplete="off" type="text" name="studentId" class="form-control" id="studentId" placeholder="Enter Student ID to Search" ngModel>
+            </div>
+            <button type="submit" class="btn btn-primary mb-2" >Search</button>
+            
+        </form>
+    </div>
+    
+    <div class="container mt-3" *ngIf="showResultTable">
+        <table class="dataTable table ">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>DOB</th>
+                    <th>Address</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor = "let student of Student">
+                    <td>{{student.studentID}}</td>
+                    <td>{{student.fName}}</td>
+                    <td>{{student.lName}}</td>
+                    <td>{{student.dob}}</td>
+                    <td>{{student.address}}</td>
+                    
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+</section>

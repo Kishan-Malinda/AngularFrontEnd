@@ -1,44 +1,35 @@
-<section class="homePage">
+<section class="bg-image">
+    <div class="container">
+          <ngx-typed-js [strings]="['Students.', 'Lecturers.']" [loop]="true" [typeSpeed]="80" [backSpeed]="70">
+            <h2 class="title text-center py-4">LMS for <span class="typing"></span> </h2>
+          </ngx-typed-js>
 
-    
-    <div class="container-fluid">
-        <img class="homeImg img-fluid" src="../../assets/Images/Background.png" />
-        
-    </div>
+            <div class="row">
+                <div class="col-md-6 col-sm-6 d-flex justify-content-center">
+                    <div class="card m-2 cb1 text-center">
+                        <div class="card-body">
+                            <span class="card-number fw-bold">01</span>
+                        
+                        <h2 class="card-title mb-4">Students</h2>
+                        <p class="card-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magnam doloribus nihil magni exercitationem numquam fuga cupiditate odio dolor natus, similique in minima id nam nesciunt cumque illum, distinctio eaque explicabo?</p>
+                        <a href="#" class="btn btn-outline-light">Go somewhere</a>
+                        </div>
+                        
+                    </div>
+                </div>
 
-    <div class="container border border-primary mb-2">
-        <h4>Search Student</h4>
-        <form class="m-2" #studentSearch="ngForm" (ngSubmit)="submit(studentSearch)">
-            <div class="mb-3">
-              <label for="studentId" class="form-label">Student ID</label>
-              <input type="text" name="studentId" class="form-control" id="studentId" placeholder="Enter Student ID to Search" ngModel>
+                <div class="col-md-6 col-sm-6 d-flex justify-content-center">
+                    <div class="card m-2 cb2 text-center">
+                        <div class="card-body">
+                            <span class="card-number fw-bold">13</span>
+                        
+                        <h2 class="card-title mb-4">Lecturers</h2>
+                        <p class="card-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magnam doloribus nihil magni exercitationem numquam fuga cupiditate odio dolor natus, similique in minima id nam nesciunt cumque illum, distinctio eaque explicabo?</p>
+                        <a href="#" class="btn btn-outline-light">Go somewhere</a>
+                        </div>
+                        
+                    </div>
+                </div>
             </div>
-            
-            <button type="submit" class="btn btn-primary" >Search</button>
-        </form>
-    </div>
-
-    <div class="container mt-3" *ngIf="showResultTable">
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>DOB</th>
-                    <th>Address</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor = "let student of Student">
-                    <td>{{student.studentID}}</td>
-                    <td>{{student.fName}}</td>
-                    <td>{{student.lName}}</td>
-                    <td>{{student.dob}}</td>
-                    <td>{{student.address}}</td>
-                    
-                </tr>
-            </tbody>
-        </table>
     </div>
 </section>

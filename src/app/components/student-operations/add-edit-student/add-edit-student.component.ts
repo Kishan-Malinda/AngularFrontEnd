@@ -24,7 +24,6 @@ export class AddEditStudentComponent implements OnInit{
   responseObj : any ={}
 
   ngOnInit():void{
-    
     this.studentID = this.student.studentID;
     this.fName = this.student.fName;
     this.lName = this.student.lName;

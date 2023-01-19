@@ -22,13 +22,17 @@ import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AddEditStudentComponent } from './components/student-operations/add-edit-student/add-edit-student.component';
 
+//Typed Animations
+import {NgxTypedJsModule} from 'ngx-typed-js';
+
+
 //For Material Components
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatTableModule} from '@angular/material/table';
 import {MatInputModule} from '@angular/material/input';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
-
+import { SearchComponent } from './components/search/search.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +42,8 @@ import {MatSortModule} from '@angular/material/sort';
     FooterComponent,
     HomeComponent,
     AddEditStudentComponent,
-    StudentOperationsComponent
+    StudentOperationsComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +57,8 @@ import {MatSortModule} from '@angular/material/sort';
     MatSortModule,
     MatFormFieldModule,
     MatTableModule,
-    MatInputModule
+    MatInputModule,
+    NgxTypedJsModule
   ],
   providers: [SharedApiServiceService], //mention shared-api-service as provider  
   bootstrap: [AppComponent]
