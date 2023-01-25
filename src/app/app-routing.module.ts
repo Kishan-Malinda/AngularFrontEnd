@@ -5,11 +5,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { StudentOperationsComponent } from './components/student-operations/student-operations.component';
 import { HomeComponent } from './components/home/home.component';
 import { SearchComponent } from './components/search/search.component';
+import { LecturerOperationsComponent } from './components/lecturer-operations/lecturer-operations.component';
 
 const routes: Routes = [
   {path:'student',component:StudentOperationsComponent},
   {path:'',component: HomeComponent},
-  {path:'search', component:SearchComponent}
+  {path:'search', component:SearchComponent},
+  {path: 'lecturer',component:LecturerOperationsComponent}
 ];
 
 @NgModule({

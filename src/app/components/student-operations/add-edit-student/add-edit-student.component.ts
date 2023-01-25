@@ -18,7 +18,7 @@ export class AddEditStudentComponent implements OnInit{
   studentID:string="";
   fName:string="";
   lName:string="";
-  dob: string="";
+  dob : string="";
   address:string="";
   
   responseObj : any ={}
@@ -27,7 +27,7 @@ export class AddEditStudentComponent implements OnInit{
     this.studentID = this.student.studentID;
     this.fName = this.student.fName;
     this.lName = this.student.lName;
-    this.dob= this.student.dob;
+    this.dob= this.student.dob  ;
     this.address = this.student.address
   }
 
@@ -68,7 +68,7 @@ export class AddEditStudentComponent implements OnInit{
       studentID: this.studentID,
       fName : this.fName,
       lName : this.lName,
-      dob : this.dob,
+      dob : this.dob , 
       address : this.address
     }
 

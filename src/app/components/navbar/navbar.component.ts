@@ -7,8 +7,9 @@ import { Component } from '@angular/core';
 })
 export class NavbarComponent {
   navigationLinks = [ {navItem: 'Home', navLink : ''}, 
-          {navItem: 'Student Page', navLink : 'student'},
-          {navItem: 'Search', navLink : 'search'} ];
+          {navItem: 'Student', navLink : 'student'},
+          {navItem: 'Search', navLink : 'search'},
+          {navItem: 'Lecturer', navLink : 'lecturer'} ];
 
   activeLink = '';
 }

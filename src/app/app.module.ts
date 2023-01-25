@@ -33,6 +33,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
 import { SearchComponent } from './components/search/search.component';
+import { LecturerOperationsComponent } from './components/lecturer-operations/lecturer-operations.component';
 
 @NgModule({
   declarations: [
@@ -43,13 +44,14 @@ import { SearchComponent } from './components/search/search.component';
     HomeComponent,
     AddEditStudentComponent,
     StudentOperationsComponent,
-    SearchComponent
+    SearchComponent,
+    LecturerOperationsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,   // adding imports
-    FormsModule,
+    FormsModule,    // For Template Driven Forms
     ReactiveFormsModule,
     ToastrModule.forRoot(), //For Notifications 
     BrowserAnimationsModule,
